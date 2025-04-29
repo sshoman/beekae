@@ -1,0 +1,323 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 211 100% 50%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 211 100% 96%;
+    --accent-foreground: 211 100% 30%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 211 100% 50%;
+
+    --radius: 0.5rem;
+    
+    --burgundy: 340 55% 35%;
+    --burgundy-light: 340 50% 90%;
+    --burgundy-dark: 340 60% 25%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 211 100% 50%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 211 100% 16%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 211 100% 50%;
+    
+    --burgundy: 340 55% 45%;
+    --burgundy-light: 340 50% 25%;
+    --burgundy-dark: 340 60% 55%;
+  }
+}
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Caveat:wght@400;500&family=Kalam:wght@300&family=Comic+Sans+MS&display=swap');
+
+.font-handwritten {
+  font-family: 'Indie Flower', cursive;
+}
+
+.font-comic-sans {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.font-indie-flower {
+  font-family: 'Indie Flower', cursive;
+}
+
+.font-caveat {
+  font-family: 'Caveat', cursive;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.dark .glass {
+  background: rgba(30, 30, 30, 0.7);
+  border: 1px solid rgba(60, 60, 60, 0.18);
+}
+
+/* Custom typing animation */
+.typing-dot {
+  @apply inline-block w-1.5 h-1.5 bg-burgundy rounded-full mr-1;
+  animation: typing 1.4s infinite both;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+/* Vertically centered placeholders */
+.chat-empty-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+/* Example categories */
+.example-category {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.example-category-item {
+  flex: 1;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.example-category-title {
+  font-family: 'Indie Flower', sans-serif;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  color: hsl(var(--burgundy));
+  letter-spacing: 0.5px;
+}
+
+/* Animated floating pencil icons */
+.example-card {
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes float-1 {
+  0%, 100% {
+    transform: translate(10px, 10px);
+  }
+  25% {
+    transform: translate(15px, 5px);
+  }
+  50% {
+    transform: translate(20px, 10px);
+  }
+  75% {
+    transform: translate(15px, 15px);
+  }
+}
+
+@keyframes float-2 {
+  0%, 100% {
+    transform: translate(15px, 20px);
+  }
+  25% {
+    transform: translate(20px, 15px);
+  }
+  50% {
+    transform: translate(25px, 20px);
+  }
+  75% {
+    transform: translate(20px, 25px);
+  }
+}
+
+@keyframes float-3 {
+  0%, 100% {
+    transform: translate(5px, 5px);
+  }
+  25% {
+    transform: translate(10px, 0px);
+  }
+  50% {
+    transform: translate(15px, 5px);
+  }
+  75% {
+    transform: translate(10px, 10px);
+  }
+}
+
+.animate-float-1 {
+  animation: float-1 8s ease-in-out infinite;
+  right: 10px;
+  bottom: 5px;
+}
+
+.animate-float-2 {
+  animation: float-2 10s ease-in-out infinite;
+  right: 15px;
+  top: 5px;
+}
+
+.animate-float-3 {
+  animation: float-3 12s ease-in-out infinite;
+  left: 10px;
+  bottom: 10px;
+}
+
+/* Message animations */
+.message-in {
+  animation: messageIn 0.3s ease-out forwards;
+}
+
+@keyframes messageIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Burgundy text and background utility classes */
+.text-burgundy {
+  color: hsl(var(--burgundy));
+}
+
+.bg-burgundy {
+  background-color: hsl(var(--burgundy));
+}
+
+.bg-burgundy\/10 {
+  background-color: hsl(var(--burgundy) / 0.1);
+}
+
+.border-burgundy {
+  border-color: hsl(var(--burgundy));
+}
+
+.border-burgundy\/20 {
+  border-color: hsl(var(--burgundy) / 0.2);
+}
+
+.focus-within\:border-burgundy:focus-within {
+  border-color: hsl(var(--burgundy));
+}
+
+/* AudioWaveform animation */
+@keyframes pulse-wave {
+  0%, 100% {
+    transform: scaleY(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scaleY(1.15);
+    opacity: 0.9;
+  }
+}
+
+.animate-pulse-wave {
+  animation: pulse-wave 1.5s ease-in-out infinite;
+}
